@@ -1,8 +1,8 @@
 import type { Metadata } from 'next'
 import { rubik } from './ui/fonts'
-
 import './globals.css'
-import Header from './components/Header'
+// import Header from './components/Header'
+// import { useState } from 'react'
 
 
 
@@ -17,14 +17,17 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
 
-  
+  // const [darkMode, setDarkMode] = useState(false)
   return (
     <html lang="en">
       <body className={`${rubik.className}`}>
-        <div className='w-[80%] m-auto mt-[50px]'>
-          <Header/>
-          {children}
-        </div>
+        {/* <div className='bg-[#F4F6FA] text-dark-navy dark:bg-dark-navy dark:text-[white] h-[100vh]'> */}
+          {/* <div className='w-[90%] lg:w-[80%] m-auto pt-[30px] lg:pt-[50px]'> */}
+            {/* <Header/> */}
+            {children}
+          {/* </div> */}
+        
+        {/* </div> */}
        
       </body>
     </html>

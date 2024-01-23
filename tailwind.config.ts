@@ -6,6 +6,7 @@ const config: Config = {
     './components/**/*.{js,ts,jsx,tsx,mdx}',
     './app/**/*.{js,ts,jsx,tsx,mdx}',
   ],
+  darkMode: 'class',
   theme: {
     extend: {
       colors: {
@@ -18,7 +19,11 @@ const config: Config = {
         "white": "#FFFFFF",
         "green": '#26D782',
         "red": '#26D782'
-    },
+      },
+      backgroundImage:{
+        // 'light-image': "url('/app/images/pattern-background-desktop-light.svg')"
+        // 'light-image': '#26D782' 
+      }
     },
   },
   plugins: [],
