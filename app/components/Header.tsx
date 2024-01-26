@@ -1,43 +1,45 @@
 'use client'
 
 import Image from "next/image"
+import { useQuestionContext } from "../context/questionContext"
 import questionlogo from '../images/Accessibility.svg'
 import questionlogomobile from '../images/icon-accesibility-mobile.svg'
-import light from '../images/icon-sun-dark.svg'
-import dark from '../images/icon-moon-dark.svg'
-import { useState } from "react"
+// import light from '../images/icon-sun-dark.svg'
+// import dark from '../images/icon-moon-dark.svg'
 import {HeaderComponentProps} from '../interface'
 
 
 const Header = ({setDarkMode, darkMode}:HeaderComponentProps) => {
 
+    const {state} = useQuestionContext()
+
     return(
         <header className='flex items-center justify-between'>
-            <div className='flex items-center'> 
-                {/* <Image
-                    src={questionlogo}
-                    alt='question-logo'
-                    // width={40}
-                    className='hidden md:block'
-                /> 
-                <Image
-                    src={questionlogomobile}
-                    alt='question-logo'
-                    // width={40}
-                    className='md:hidden'
-                /> 
-                <p className='text-[18px] md:text-[28px] font-500 ml-[10px]'>Accessibility</p> */}
-            </div>
+            <div > 
+                {
+                    state?.category !== '' &&  
+                    <div className='flex items-center'>
+                        <Image
+                            src={`/images/${state.category}.svg`}
+                            alt='question-logo'
+                            width={40}
+                            height={40}
+                        /> 
+                        <p className='text-[18px] md:text-[28px] font-500 ml-[10px]'>{state.category}</p>
+                    </div>
+                }    
+            </div>  
+           
             <div className='flex items-center gap-[10px] md:gap-[20px]'>
                 <Image
-                    src={light}
+                    src={'/images/icon-sun-dark.svg'}
                     alt='light-mode'
                     width={20}
                     height={20}
                     className='md:hidden'
                 />
                  <Image
-                    src={light}
+                    src={'/images/icon-sun-dark.svg'}
                     alt='light-mode'
                     width={30}
                     height={30}
@@ -52,21 +54,20 @@ const Header = ({setDarkMode, darkMode}:HeaderComponentProps) => {
                     />
                 </div>
                 <Image
-                    src={dark}
+                    src={'/images/icon-moon-dark.svg'}
                     alt='dark-mode'
                     width={20}
                     height={20}
                     className='md:hidden'
                 />
                  <Image
-                    src={dark}
+                    src={'/images/icon-moon-dark.svg'}
                     alt='dark-mode'
                     width={30}
                     height={30}
                     className='hidden md:block'
                 />
             </div>
-        {/* functionality of switch toggle to change background image and color. */}
         </header>
     )
 }

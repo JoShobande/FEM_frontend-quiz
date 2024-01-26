@@ -29,12 +29,12 @@ export default function Home() {
             text-dark-navy dark:bg-dark-navy dark:text-[white] h-[100vh]
           `}
       >
-        <div className='w-[90%] lg:w-[70%] m-auto pt-[30px] lg:pt-[50px]'>
+        <div className='w-[90%] lg:w-[80%] m-auto pt-[30px] lg:pt-[50px]'>
           <Header
             setDarkMode={setDarkMode}
             darkMode={darkMode}
           />
-          <div className='mt-[150px]'>
+          <div className='mt-[50px] lg:mt-[150px]'>
             {handleRenderCurrentStage()}
           </div>
         </div>

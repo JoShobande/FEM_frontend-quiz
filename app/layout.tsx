@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 import { rubik } from './ui/fonts'
 import './globals.css'
+import { QuestionProvider } from './context/questionContext'
 // import Header from './components/Header'
 // import { useState } from 'react'
 
@@ -21,14 +22,9 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${rubik.className}`}>
-        {/* <div className='bg-[#F4F6FA] text-dark-navy dark:bg-dark-navy dark:text-[white] h-[100vh]'> */}
-          {/* <div className='w-[90%] lg:w-[80%] m-auto pt-[30px] lg:pt-[50px]'> */}
-            {/* <Header/> */}
-            {children}
-          {/* </div> */}
-        
-        {/* </div> */}
-       
+        <QuestionProvider>
+          {children}
+        </QuestionProvider>
       </body>
     </html>
   )

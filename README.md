@@ -60,7 +60,13 @@ I built this project with Nextjs 14, a react framework
 - I created the Header components which consists of the background switch and which should also consist of the title of the category of questions being answered in the moment.
 - I implemented  functionality of the light and dark mode switch next. I made use of Tailwind dark and light mode. Link to how to implement that below under 'useful Resources'
 - I also adjusted certain things on the page like, the background picture, the text colors based on the mode (light or dark). Snippet of code below
-
+For the implementation of the actual logic/functionality:
+- i put the question sets in a json file
+- i created a component for the introduction part of the question where a user selects the catgory they want to be quized on.
+- to display the categories, instead of manually hardcoding the categories, i mapped through the question set array i stored in a json file and rendered the title(category) of each question set in the array.
+- i initially didn't realize that the path to the icon for each category was also part of the question set in the json file so inorder to render the correct icon corresponding to the category rendered, i renamed the category icons in my images folder to match the title of the catgory. code snippet shown below.
+I made use of context api to manage states in the following ways:
+- to keep track of the category title selected which is rendered in the header of the website, i created a context for it so it can be easiy accessible on any page or component without having to worry about passing props.
 
 ### Built with
 
@@ -83,6 +89,32 @@ JSX to switch background image, text color based on the mode(light or dark) and 
 >
 </div>
 ```
+code snippet to map through question set to render the category title and corresponding icon
+```jsx
+<div className='space-y-4'>
+    {
+        quizes?.quizzes.map((quiz:QuizProps)=>{
+            return(
+                <div 
+                    className='bg-[white] dark:bg-navy rounded-[10px] flex items-center p-[20px] w-[100%] lg:w-[500px] m-auto cursor-pointer '
+                    onClick={()=>dispatch({
+                        type: questionContextActionTypes.updateCategoryName,
+                        payload: {key:'category', data:quiz.title}
+                    })}
+                >  
+                    <Image
+                        src={`/images/${quiz.title}.svg`}
+                        alt='icon'
+                        className='object-fit'
+                        width={32}
+                        height={32}
+                    />
+                    <p className='text-dark-navy dark:text-white ml-[10px] text-xl'>{quiz.title}</p>
+                </div>
+            )
+        })
+    }
+</div>
 
 
 ```css
