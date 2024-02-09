@@ -29,3 +29,7 @@ export type Action = {
   payload?: Payload;
   type: Types
 }
+
+export interface CategoriesProps{
+  setCurrentStage: Dispatch<SetStateAction<"default" | "question">>
+}

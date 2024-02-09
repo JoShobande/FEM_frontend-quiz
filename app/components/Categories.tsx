@@ -1,13 +1,21 @@
 import quizes from '../data.json'
-import { QuizProps } from '../interface'
+import { CategoriesProps, QuizProps } from '../interface'
 import Image from 'next/image'
 import { useQuestionContext } from '../context/questionContext'
 import { questionContextActionTypes } from '../context/questionReducer'
 
-const Categories = () => {
+const Categories:React.FC<CategoriesProps> = ({setCurrentStage}) => {
     console.log(quizes.quizzes)
 
     const {dispatch} = useQuestionContext()
+
+   const handleSelectCategory = (quizTitle:string) => {
+       setCurrentStage('question')
+       dispatch({
+        type: questionContextActionTypes.updateCategoryName,
+        payload: {key:'category', data:quizTitle}
+       })
+   }
 
     return(
         <div className='lg:flex justify-between'>
@@ -17,17 +25,13 @@ const Categories = () => {
                 <p className='text-[14px] lg:text-[20px] text-grey-navy italic font-[300] mt-[20px] lg:mt-[80px] mb-[40px] lg:mb-[0] dark:text-[#ABC1E1]'>Pick a subject to get started.</p>
             </div>
            <div>
-
                <div className='space-y-4'>
                 {
                     quizes?.quizzes.map((quiz:QuizProps)=>{
                         return(
                             <div 
                                 className='bg-[white] dark:bg-navy rounded-[10px] flex items-center p-[20px] w-[100%] lg:w-[500px] m-auto cursor-pointer '
-                                onClick={()=>dispatch({
-                                    type: questionContextActionTypes.updateCategoryName,
-                                    payload: {key:'category', data:quiz.title}
-                                })}
+                                onClick={()=>handleSelectCategory(quiz.title)}
                             >  
                                 <Image
                                     src={`/images/${quiz.title}.svg`}

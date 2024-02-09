@@ -2,18 +2,19 @@
 import { useState } from "react";
 import Categories from "./components/Categories";
 import Header from "./components/Header";
+import Questions from "./components/Questions";
 
 export default function Home() {
 
   const [darkMode, setDarkMode] = useState(false)
-  const [currentStage, setCurrentStage] = useState('default')
+  const [currentStage, setCurrentStage] = useState<'default' | 'question'>('default')
 
   const handleRenderCurrentStage = () => {
     switch (currentStage) {
       case 'default':
-        return <Categories/>
-        break;
-    
+        return <Categories setCurrentStage={setCurrentStage}/>
+      case 'question':
+        return <Questions/>
       default:
         break;
     }
@@ -34,7 +35,7 @@ export default function Home() {
             setDarkMode={setDarkMode}
             darkMode={darkMode}
           />
-          <div className='mt-[50px] lg:mt-[150px]'>
+          <div className='mt-[50px] lg:mt-[100px]'>
             {handleRenderCurrentStage()}
           </div>
         </div>

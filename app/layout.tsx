@@ -2,10 +2,6 @@ import type { Metadata } from 'next'
 import { rubik } from './ui/fonts'
 import './globals.css'
 import { QuestionProvider } from './context/questionContext'
-// import Header from './components/Header'
-// import { useState } from 'react'
-
-
 
 export const metadata: Metadata = {
   title: 'Create Next App',
@@ -18,7 +14,6 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
 
-  // const [darkMode, setDarkMode] = useState(false)
   return (
     <html lang="en">
       <body className={`${rubik.className}`}>
