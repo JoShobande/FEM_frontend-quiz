@@ -1,21 +1,23 @@
+'use client'
+
 import quizes from '../data.json'
 import { CategoriesProps, QuizProps } from '../interface'
 import Image from 'next/image'
 import { useQuestionContext } from '../context/questionContext'
 import { questionContextActionTypes } from '../context/questionReducer'
 
+
 const Categories:React.FC<CategoriesProps> = ({setCurrentStage}) => {
-    console.log(quizes.quizzes)
 
     const {dispatch} = useQuestionContext()
-
+   
    const handleSelectCategory = (quizTitle:string) => {
        setCurrentStage('question')
        dispatch({
         type: questionContextActionTypes.updateCategoryName,
         payload: {key:'category', data:quizTitle}
        })
-   }
+    }
 
     return(
         <div className='lg:flex justify-between'>

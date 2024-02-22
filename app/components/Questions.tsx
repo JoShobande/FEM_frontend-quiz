@@ -6,8 +6,7 @@ import { questionContextActionTypes } from '../context/questionReducer'
 import ProgressBar from './ProgressBar'
 
 const Questions = () => {
-    console.log(quizes.quizzes)
-
+   
     const {dispatch, state} = useQuestionContext()
     console.log(state)
 

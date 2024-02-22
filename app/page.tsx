@@ -1,13 +1,20 @@
 'use client'
-import { useState } from "react";
+
+import { useEffect, useState } from "react";
 import Categories from "./components/Categories";
 import Header from "./components/Header";
 import Questions from "./components/Questions";
+import { useQuestionContext } from "./context/questionContext";
+import { questionContextActionTypes } from "./context/questionReducer";
+import quizes from './data.json'
+
 
 export default function Home() {
-
+  
   const [darkMode, setDarkMode] = useState(false)
   const [currentStage, setCurrentStage] = useState<'default' | 'question'>('default')
+
+  const {dispatch, state} = useQuestionContext()
 
   const handleRenderCurrentStage = () => {
     switch (currentStage) {
@@ -19,6 +26,21 @@ export default function Home() {
         break;
     }
   }
+
+  const handleAddCategoryQuestion = () => {
+    let localQuestionSet = quizes.quizzes.filter((item)=>item.title === state.category)
+    dispatch({
+        type: questionContextActionTypes.updateQuestionSet,
+        payload: {key:'currentQuestion', data:localQuestionSet[0].questions}
+    })
+
+  } 
+
+  useEffect(()=>{
+    if(state.category !== ''){
+        handleAddCategoryQuestion()
+    }
+   },[state.category])
 
   return (
     <main className={`bg-[#F4F6FA] text-dark-navy dark:bg-dark-navy dark:text-[white] h-[100vh] ${darkMode && 'dark'}`}>

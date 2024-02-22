@@ -22,7 +22,7 @@ export type Types = keyof typeof questionContextActionTypes
 export type Payload = {key:keyof QuestionContextState, data:any }
 export interface QuestionContextState {
   category: string,
-  CurrentQuestion : []
+  currentQuestion : []
 }
 
 export type Action = {
