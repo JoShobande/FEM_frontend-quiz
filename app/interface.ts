@@ -17,12 +17,18 @@ export type QuizProps = {
   }[]
 }
 
+export type ContextCurrentQuestionProps = {
+  answer: string;
+  question:string;
+  options:string[]
+}
+
 
 export type Types = keyof typeof questionContextActionTypes
 export type Payload = {key:keyof QuestionContextState, data:any }
 export interface QuestionContextState {
   category: string,
-  currentQuestion : []
+  currentQuestion : ContextCurrentQuestionProps[]
 }
 
 export type Action = {

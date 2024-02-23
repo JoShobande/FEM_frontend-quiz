@@ -18,7 +18,7 @@ const config: Config = {
         'light-blue':'#A04400',
         "white": "#FFFFFF",
         "green": '#26D782',
-        "red": '#26D782'
+        "red": '#EE5454'
       },
       backgroundImage:{
         // 'light-image': "url('/app/images/pattern-background-desktop-light.svg')"

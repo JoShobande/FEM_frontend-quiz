@@ -67,6 +67,7 @@ For the implementation of the actual logic/functionality:
 - i initially didn't realize that the path to the icon for each category was also part of the question set in the json file so inorder to render the correct icon corresponding to the category rendered, i renamed the category icons in my images folder to match the title of the catgory. code snippet shown below.
 I made use of context api to manage states in the following ways:
 - to keep track of the category title selected which is rendered in the header of the website, i created a context for it so it can be easiy accessible on any page or component without having to worry about passing props.
+- to keep track of the question set under the selected category
 
 ### Built with
 

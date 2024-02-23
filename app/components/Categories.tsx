@@ -29,9 +29,10 @@ const Categories:React.FC<CategoriesProps> = ({setCurrentStage}) => {
            <div>
                <div className='space-y-4'>
                 {
-                    quizes?.quizzes.map((quiz:QuizProps)=>{
+                    quizes?.quizzes.map((quiz:QuizProps, index)=>{
                         return(
                             <div 
+                                key={index}
                                 className='bg-[white] dark:bg-navy rounded-[10px] flex items-center p-[20px] w-[100%] lg:w-[500px] m-auto cursor-pointer '
                                 onClick={()=>handleSelectCategory(quiz.title)}
                             >  
