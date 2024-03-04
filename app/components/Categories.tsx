@@ -9,7 +9,7 @@ import { questionContextActionTypes } from '../context/questionReducer'
 
 const Categories:React.FC<CategoriesProps> = ({setCurrentStage}) => {
 
-    const {dispatch} = useQuestionContext()
+   const {dispatch} = useQuestionContext()
    
    const handleSelectCategory = (quizTitle:string) => {
        setCurrentStage('question')

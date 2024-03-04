@@ -39,3 +39,7 @@ export type Action = {
 export interface CategoriesProps{
   setCurrentStage: Dispatch<SetStateAction<"default" | "question">>
 }
+
+export interface ProgressBarProps{
+  currentQuestion: number
+}
